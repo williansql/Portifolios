@@ -1,0 +1,226 @@
+.centralizeApp {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  .body {
+    margin-top: 83px;
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    .header {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 100%;
+      color: #07619d;
+    }
+    .infos {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 30px;
+      input {
+        height: 48px;
+        background: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #999999;
+        padding-left: 16px;
+      }
+      textarea {
+        height: 180px;
+        background: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #999999;
+        padding-left: 16px;
+        padding-top: 10px;
+      }
+    }
+
+    .arrayContent {
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      .nameBt {
+        width: 304px;
+        height: 48px;
+        background: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        padding-left: 16px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #999999;
+      }
+      .radios {
+        display: flex;
+        align-items: end;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.005em;
+        color: #0a0a0a;
+        gap: 10px;
+        .radio {
+          // display: flex;
+          width: 20px;
+          height: 20px;
+        }
+      }
+      .inputFile {
+        display: flex;
+        align-items: center;
+        width: 250px;
+        height: 48px;
+        background: #07619d;
+        border-radius: 4px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21px;
+        letter-spacing: 0.05em;
+        color: #ffffff;
+        label{
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          gap: 10px;
+        }
+      }
+      .link {
+        display: flex;
+        width: 608px;
+        height: 48px;
+        background: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        padding-left: 16px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #999999;
+      }
+    }
+
+    .flowAnexos {
+      .controlsArray {
+        margin-top: 25px;
+        display: flex;
+        gap: 30px;
+        .newAnexo {
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 16px;
+          display: flex;
+          align-items: center;
+          letter-spacing: 0.0125em;
+          color: #36aa3b;
+        }
+        .rmAnexo {
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 16px;
+          display: flex;
+          align-items: center;
+          letter-spacing: 0.0125em;
+          color: #ff0000;
+        }
+      }
+      .resultsFile {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        .addResults {
+          display: flex;
+          gap: 8px;
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 19px;
+          display: flex;
+          align-items: center;
+          color: #212121;
+        }
+        label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 18px;
+          width: 356px;
+          height: 45px;
+          background: #07619d;
+          border-radius: 4px;
+          border: none;
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 21px;
+          letter-spacing: 0.05em;
+          color: #ffffff;
+        }
+      }
+    }
+    button {
+      margin-top: 30px;
+      background: #76a485;
+      border: none;
+      border-radius: 4px;
+      width: 145px;
+      height: 45px;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 21px;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+    }
+  }
+}
+
+input[type="file"] {
+  display: none;
+}
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+p{
+  margin-top: 50px;
+  font-family: 'roboto';
+  font-size: 14pt;
+  font-weight: 500;
+  color: #999999;
+}

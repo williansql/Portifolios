@@ -1,0 +1,94 @@
+<form [formGroup]="anexoForm" (ngSubmit)="onSubmit()">
+  <div class="centralizeApp">
+    <div class="body">
+
+      <!-- TITULO -->
+      <span class="header">Cadastro de Editais</span>
+
+
+      <!-- GRUPO DE FORMULARIO -->
+      <div class="infos">
+        <input type="text" placeholder="Titulo" formControlName="titulo">
+        <textarea placeholder="Descreva aqui o edital" formControlName="descreva" ></textarea>
+        <input type="email" placeholder="E-mail para contato" formControlName="email" >
+      </div>
+
+
+      <!-- GRUPO DO ARRAY -->
+      <div formArrayName="anexos">
+        <div *ngFor=" let anexo of anexos.controls; let i = index" >
+          <div [formGroupName]="i" class="arrayContent" >
+
+            <input class="nameBt" type="text" placeholder="Nome do botão" formControlName="nameBt" >
+
+            <div class="radios">
+              <input
+                class="radio"
+                type="radio"
+                name="{{ radio }}"
+                value="ARQUIVO"
+                formControlName="radio">
+              <span>ARQUIVO</span>
+              <input
+                class="radio"
+                type="radio"
+                name="{{ radio }}"
+                value="LINK"
+                formControlName="radio" >
+              <span>LINK</span>
+            </div>
+
+            <div *ngIf="show(i) == 'ARQUIVO'" class="inputFile">
+              <label [for]="'file'+i">
+                <img src="./assets/link.svg" alt="link anexo">
+                <span>ADICIONAR ARQUIVO</span>
+              </label>
+              <input
+                (change)="upload($event)"
+                type="file"
+                [id]="'file'+i"
+                class="form-control"
+                formControlName="file">
+            </div>
+
+            <input *ngIf="show(i) == 'LINK'" class="link" type="text" placeholder="Insira aqui o link" formControlName="link">
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- FLUXO DE CONTROLE DO ARRAY E GERADOR DO BOTÃO DE ANEXO DE RESULTADOS -->
+      <div class="flowAnexos">
+        <div class="controlsArray">
+          <span class="newAnexo" (click)="addAnexo()" >+ Adicionar anexo</span>
+          <span *ngIf="this.anexos.length >= 1" class="rmAnexo" (click)="rmAnexo()" >(D) Excluir anexo</span>
+        </div>
+        <div class="resultsFile">
+          <div class="addResults">
+            <input
+              [(ngModel)]="checkbox"
+              id="resultados"
+              type="checkbox"
+              formControlName="resultados">
+            <span>Adicionar resultado</span>
+          </div>
+          <div *ngIf="checkbox"  >
+            <label for="filePdf">ANEXE AQUI O PDF DE RESULTADOS</label>
+            <input id="filePdf" type="file" formControlName="filePdf">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- SUBMIT BUTTON -->
+      <button> CADASTRAR </button>
+
+    </div>
+  </div>
+
+  <p>
+    {{ this.anexoForm.value | json }}
+  </p>
+
+</form>
