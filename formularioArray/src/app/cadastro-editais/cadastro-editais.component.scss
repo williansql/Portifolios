@@ -56,6 +56,18 @@
       display: flex;
       align-items: center;
       gap: 30px;
+
+      .files{
+        box-shadow: 0 0 0 0;
+        border: 0 none;
+        outline: 0;
+      }
+      .files:focus{
+        box-shadow: 0 0 0 0;
+        border: 0 none;
+        outline: 0;
+      }
+
       .nameBt {
         width: 304px;
         height: 48px;
@@ -89,28 +101,48 @@
           height: 20px;
         }
       }
-      .inputFile {
-        display: flex;
+
+      .newDoc {
+        display: inline-flex;
+        gap: 10px;
         align-items: center;
-        width: 250px;
-        height: 48px;
-        background: #07619d;
-        border-radius: 4px;
-        font-family: "Roboto";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 21px;
-        letter-spacing: 0.05em;
-        color: #ffffff;
-        label{
-          width: 100%;
-          display: flex;
-          align-items: flex-end;
+        .inputFile {
+          display: inline-flex;
+          align-items: center;
           justify-content: center;
           gap: 10px;
+          width: 250px;
+          height: 48px;
+          background: #07619d;
+          border-radius: 4px;
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 21px;
+          letter-spacing: 0.05em;
+          color: #ffffff;
+          // label {
+          //   width: 100%;
+          //   height: 100%;
+          //   display: flex;
+          //   align-items: center;
+          //   justify-content: center;
+          //   gap: 10px;
+          // }
         }
       }
+
+      .labelFile {
+        padding-left: 10px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 136.9%;
+        color: #212121;
+      }
+
       .link {
         display: flex;
         width: 608px;
@@ -160,6 +192,11 @@
         margin-top: 20px;
         display: flex;
         flex-direction: column;
+        .fileResultados{
+          display: flex;
+          gap: 10px;
+          align-items: baseline;
+        }
         .addResults {
           display: flex;
           gap: 8px;
@@ -207,19 +244,35 @@
       letter-spacing: 0.05em;
       color: #ffffff;
     }
+    button:disabled:hover {
+      cursor: default;
+    }
+    button:disabled {
+      opacity: 40%;
+    }
   }
 }
 
-input[type="file"] {
+
+
+
+
+
+
+
+input[type="file"]{
+  display: none;
+}
+.inputFile{
   display: none;
 }
 input[type="checkbox"] {
   width: 20px;
   height: 20px;
 }
-p{
+p {
   margin-top: 50px;
-  font-family: 'roboto';
+  font-family: "roboto";
   font-size: 14pt;
   font-weight: 500;
   color: #999999;
