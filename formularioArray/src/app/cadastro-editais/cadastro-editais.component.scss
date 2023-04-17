@@ -7,6 +7,14 @@
     display: flex;
     flex-direction: column;
     width: 1200px;
+    .alertsInputs {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #ff4d49;
+    }
     .header {
       font-family: "Roboto";
       font-style: normal;
@@ -22,6 +30,7 @@
       width: 100%;
       gap: 30px;
       input {
+        width: -webkit-fill-available;
         height: 48px;
         background: #ffffff;
         border: 1px solid #cccccc;
@@ -35,6 +44,7 @@
         padding-left: 16px;
       }
       textarea {
+        width: -webkit-fill-available;
         height: 180px;
         background: #ffffff;
         border: 1px solid #cccccc;
@@ -48,6 +58,121 @@
         padding-left: 16px;
         padding-top: 10px;
       }
+      .anexoContent {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        .files{
+          box-shadow: 0 0 0 0;
+          border: 0 none;
+          outline: 0;
+        }
+        .files:focus{
+          box-shadow: 0 0 0 0;
+          border: 0 none;
+          outline: 0;
+        }
+
+        .nameBt {
+          width: 304px;
+          height: 48px;
+          background: #ffffff;
+          border: 1px solid #cccccc;
+          border-radius: 4px;
+          padding-left: 16px;
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+          color: #999999;
+        }
+        .radios {
+          display: flex;
+          align-items: end;
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 19px;
+          display: flex;
+          align-items: center;
+          letter-spacing: 0.005em;
+          color: #0a0a0a;
+          gap: 10px;
+          .radio:hover{
+            cursor: pointer;
+          }
+          .radio {
+            // display: flex;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      .newDoc {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        .inputFile:hover{
+          cursor: pointer;
+          opacity: 90%;
+        }
+        .inputFile {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          width: 250px;
+          height: 48px;
+          background: #07619d;
+          border-radius: 4px;
+          font-family: "Roboto";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 21px;
+          letter-spacing: 0.05em;
+          color: #ffffff;
+          // label {
+          //   width: 100%;
+          //   height: 100%;
+          //   display: flex;
+          //   align-items: center;
+          //   justify-content: center;
+          //   gap: 10px;
+          // }
+        }
+      }
+
+      .labelFile {
+        padding-left: 10px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 136.9%;
+        color: #212121;
+      }
+
+      .link {
+        display: flex;
+        width: 608px;
+        height: 48px;
+        background: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        padding-left: 16px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #999999;
+      }
+    }
     }
 
     .arrayContent {
@@ -95,6 +220,9 @@
         letter-spacing: 0.005em;
         color: #0a0a0a;
         gap: 10px;
+        .radio:hover{
+          cursor: pointer;
+        }
         .radio {
           // display: flex;
           width: 20px;
@@ -106,6 +234,10 @@
         display: inline-flex;
         gap: 10px;
         align-items: center;
+        .inputFile:hover {
+          cursor: pointer;
+          opacity: 90%;
+        }
         .inputFile {
           display: inline-flex;
           align-items: center;
@@ -165,6 +297,9 @@
         margin-top: 25px;
         display: flex;
         gap: 30px;
+        .newAnexo:hover{
+          cursor: pointer;
+        }
         .newAnexo {
           font-family: "Roboto";
           font-style: normal;
@@ -175,6 +310,14 @@
           align-items: center;
           letter-spacing: 0.0125em;
           color: #36aa3b;
+          gap: 5px;
+          img{
+            width: 18px;
+            height: 20px;
+          }
+        }
+        .rmAnexo:hover{
+          cursor: pointer;
         }
         .rmAnexo {
           font-family: "Roboto";
@@ -186,12 +329,21 @@
           align-items: center;
           letter-spacing: 0.0125em;
           color: #ff0000;
+          gap: 5px;
+          img{
+            width: 18px;
+            height: 20px;
+          }
         }
       }
       .resultsFile {
         margin-top: 20px;
         display: flex;
         flex-direction: column;
+        label:hover{
+          cursor: pointer;
+          opacity: 90%;
+        }
         .fileResultados{
           display: flex;
           gap: 10px;
@@ -208,6 +360,9 @@
           display: flex;
           align-items: center;
           color: #212121;
+          input:hover{
+            cursor: pointer;
+          }
         }
         label {
           display: flex;
@@ -229,33 +384,51 @@
         }
       }
     }
-    button {
-      margin-top: 30px;
-      background: #76a485;
-      border: none;
-      border-radius: 4px;
-      width: 145px;
-      height: 45px;
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 21px;
-      letter-spacing: 0.05em;
-      color: #ffffff;
+
+    .disabledButton{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: baseline;
+        gap: 10px;
+
+        button:hover{
+            cursor: pointer;
+            opacity: 90%;
     }
-    button:disabled:hover {
-      cursor: default;
+        button {
+            margin-top: 30px;
+            background: #76a485;
+            border: none;
+            border-radius: 4px;
+            width: 145px;
+            height: 45px;
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing: 0.05em;
+            color: #ffffff;
+        }
+
+        button:disabled:hover {
+            cursor: not-allowed;
+
+        }
+        button:disabled {
+            opacity: 20%;
+            background-color: #999999;
+        }
+        span{
+            justify-content: flex-end;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #ff4d49;
+        }
     }
-    button:disabled {
-      opacity: 40%;
-    }
-  }
+
 }
-
-
-
-
 
 
 

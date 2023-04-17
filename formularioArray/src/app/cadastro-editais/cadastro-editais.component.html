@@ -1,153 +1,321 @@
 <form [formGroup]="anexoForm" (ngSubmit)="onSubmit()">
-  <div class="centralizeApp">
-    <div class="body">
-      <!-- TITULO -->
-      <span class="header">Cadastro de Editais</span>
+    <div class="centralizeApp">
+        <div class="body">
+            <!-- TITULO -->
+            <span class="header">Cadastro de Editais</span>
 
-      <!-- GRUPO DE FORMULARIO -->
-      <div class="infos">
-        <!-- VALIDAÇÃO E CAMPO TITULO -->
-        <input type="text" placeholder="Titulo" formControlName="titulo" />
-        <div *ngIf="invalidField('titulo')">
-          <div *ngIf="anexoForm.controls['titulo'].errors?.['required']">
-            <span>Campo obrigatorio</span>
-          </div>
-          <div *ngIf="anexoForm.controls['titulo'].errors?.['titulo']">
-            <span>Titulo inválido</span>
-          </div>
-        </div>
+            <!-- GRUPO DE FORMULARIO -->
+            <div class="infos">
+                <!-- VALIDAÇÃO E CAMPO TITULO -->
+                <div class="alertsInputs">
+                    <input
+                        required
+                        [ngClass]="{ wrong: invalidField('titulo') }"
+                        type="text"
+                        placeholder="Titulo"
+                        formControlName="titulo"
+                    />
+                    <div
+                        *ngIf="invalidField('titulo')"
+                        class="alert alert-danger"
+                    >
+                        <div
+                            *ngIf="anexoForm.controls['titulo'].errors?.['required']"
+                        >
+                            Campo obrigatório*
+                        </div>
+                        <div
+                            *ngIf="anexoForm.controls['titulo'].errors?.['titulo']"
+                        >
+                            Título inválido*
+                        </div>
+                    </div>
+                </div>
 
-        <!-- VALIDAÇÃO E CAMPO DESCREVA AQUI O EDITAL -->
-        <textarea
-          placeholder="Descreva aqui o edital"
-          formControlName="descreva"
-        ></textarea>
-        <div *ngIf="invalidField('titulo')">
-          <div *ngIf="anexoForm.controls['descreva'].errors?.['required']">
-            <span>Campo obrigatorio</span>
-          </div>
-          <div *ngIf="anexoForm.controls['descreva'].errors?.['descreva']">
-            <span>Titulo inválido</span>
-          </div>
-        </div>
+                <!-- VALIDAÇÃO E CAMPO DESCREVA AQUI O EDITAL -->
+                <div class="alertsInputs">
+                    <textarea
+                        [ngClass]="{ wrong: invalidField('descreva') }"
+                        placeholder="Descreva aqui o edital"
+                        formControlName="descreva"
+                    ></textarea>
+                    <div
+                        *ngIf="invalidField('descreva')"
+                        class="alert alert-danger"
+                    >
+                        <div
+                            *ngIf="anexoForm.controls['descreva'].errors?.['required']"
+                        >
+                            Campo obrigatório*
+                        </div>
+                        <div
+                            *ngIf="anexoForm.controls['descreva'].errors?.['descreva']"
+                        >
+                            Descrição inválida*
+                        </div>
+                    </div>
+                </div>
 
-        <!-- VALIDAÇÃO E E CAMPO EMAIL -->
-        <input
-          type="email"
-          placeholder="E-mail para contato"
-          formControlName="email"
-        />
-        <div *ngIf="invalidField('email')">
-          <div *ngIf="anexoForm.controls['email'].errors?.['required']">
-            <span>Campo obrigatorio</span>
-          </div>
-          <div *ngIf="anexoForm.controls['email'].errors?.['email']">
-            <span>Titulo inválido</span>
-          </div>
-        </div>
-      </div>
+                <!-- VALIDAÇÃO E CAMPO EMAIL -->
+                <div class="alertsInputs">
+                    <input
+                        [ngClass]="{ wrong: invalidField('email') }"
+                        type="email"
+                        placeholder="E-mail para contato"
+                        formControlName="email"
+                    />
+                    <div
+                        *ngIf="invalidField('email')"
+                        class="alert alert-danger"
+                    >
+                        <div
+                            *ngIf="anexoForm.controls['email'].errors?.['required']"
+                        >
+                            Campo obrigatório*
+                        </div>
+                        <div
+                            *ngIf="anexoForm.controls['email'].errors?.['email']"
+                        >
+                            E-mail inválido*
+                        </div>
+                    </div>
+                </div>
 
-      <!-- GRUPO DO ARRAY -->
-      <div formArrayName="anexos">
-        <div *ngFor="let anexo of anexos.controls; let i = index">
-          <div [formGroupName]="i" class="arrayContent">
-            <input
-              class="nameBt"
-              type="text"
-              placeholder="Nome do botão"
-              formControlName="nameBt"
-            />
+                <!-- GRUPO DOS ANEXOS PAI -->
+                <div class="anexoContent">
+                    <!-- VALIDAÇÃO E CAMPO NOME DO ANEXO -->
+                    <div class="alertsInputs">
+                        <input
+                            class="nameBt"
+                            type="text"
+                            placeholder="Nome do botão"
+                            formControlName="nameBt"
+                        />
+                        <div
+                            *ngIf="invalidField('nameBt')"
+                            class="alert alert-danger"
+                        >
+                            <div
+                                *ngIf="anexoForm.controls['nameBt'].errors?.['required']"
+                            >
+                                Campo obrigatório*
+                            </div>
+                            <div
+                                *ngIf="anexoForm.controls['nameBt'].errors?.['nameBt']"
+                            >
+                                Nome inválido*
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="radios">
-              <input
-                class="radio"
-                type="radio"
-                name="{{ radio }}"
-                value="ARQUIVO"
-                formControlName="radio"
-              />
-              <span>ARQUIVO</span>
-              <input
-                class="radio"
-                type="radio"
-                name="{{ radio }}"
-                value="LINK"
-                (click)="clearFile(i)"
-                formControlName="radio"
-              />
-              <span>LINK</span>
+                    <!-- CAMPO RADIO BUTTON - ARQUIVO / LINK -->
+                    <div class="radios">
+                        <!-- RADIO ARQUIVO -->
+                        <input
+                            class="radio"
+                            type="radio"
+                            name="radio"
+                            value="ARQUIVO"
+                            formControlName="radio"
+                        />
+                        <span>ARQUIVO</span>
+
+                        <!-- RADIO LINK -->
+                        <input
+                            class="radio"
+                            type="radio"
+                            name="radio"
+                            value="LINK"
+                            (click)="clearFile()"
+                            formControlName="radio"
+                        />
+                        <span>LINK</span>
+                    </div>
+
+                    <!-- OPÇÕES DO RADIO ARQUIVO -->
+                    <div class="newDoc" *ngIf="show() == 'ARQUIVO'">
+                        <label class="inputFile" for="file">
+                            <img src="./assets/link.svg" alt="link anexo" />
+                            <span>ADICIONAR ARQUIVO</span>
+                        </label>
+                        <input
+                            (input)="upload($event)"
+                            type="file"
+                            id="file"
+                            class="form-control"
+                            formControlName="file"
+                            accept=".pdf, .doc, .docx, .txt, .word"
+                        />
+                        <span *ngIf="!fileName"
+                            >Nenhum arquivo selecionado ...</span
+                        >
+                        <span *ngIf="fileName"> {{ fileName }} </span>
+                    </div>
+
+                    <!-- OPÇÕES DO RADIO LINK -->
+                    <input
+                        *ngIf="show() == 'LINK'"
+                        class="link"
+                        type="text"
+                        placeholder="Insira aqui o link"
+                        formControlName="link"
+                    />
+                </div>
             </div>
 
-            <div class="newDoc" *ngIf="show(i) == 'ARQUIVO'">
-              <label class="inputFile" [for]="'file' + i">
-                <img src="./assets/link.svg" alt="link anexo" />
-                <span>ADICIONAR ARQUIVO</span>
-              </label>
-              <input
-                (input)="upload($event, i)"
-                type="file"
-                [id]="'file' + i"
-                class="form-control"
-              />
-              <span *ngIf="!anexoGroup(i)"
-                >Nenhum arquivo selecionado ...</span
-              >
-              <span *ngIf="anexoGroup(i)"> {{ anexoGroup(i) }} </span>
+            <!-- GRUPO DOS ANEXOS ARRAY -->
+            <div formArrayName="anexos">
+                <div *ngFor="let anexo of anexos.controls; let i = index">
+                    <div [formGroupName]="i" class="arrayContent">
+                        <!-- VALIDAÇÃO E CAMPO DO ARRAY NOME DO ANEXO -->
+                        <div class="alertsInputs">
+                            <input
+                                class="nameBt"
+                                type="text"
+                                placeholder="Nome do botão"
+                                formControlName="nameBtn"
+                            />
+                            <div
+                                *ngIf="invalidFieldArray('nameBtn', i)"
+                                class="alert alert-danger"
+                            >
+                                <div
+                                   *ngIf="anexos.controls[i].get('nameBtn')!.errors?.['required']"
+                                >
+                                    Campo obrigatório*
+                                </div>
+                                <div
+                                    *ngIf="anexoForm.controls['nameBt'].errors?.['nameBt']"
+                                >
+                                    Nome inválido*
+                                </div>
+                            </div>
+                        </div>
+                        <!-- CAMPOS DO RADIO BUTTONS -->
+                        <div class="radios">
+                            <!-- RADIO ARQUIVO -->
+                            <input
+                                class="radio"
+                                type="radio"
+                                name="{{ radio }}"
+                                value="ARQUIVO"
+                                formControlName="radio"
+                            />
+                            <span>ARQUIVO</span>
+
+                            <!-- RADIO LINK -->
+                            <input
+                                class="radio"
+                                type="radio"
+                                name="{{ radio }}"
+                                value="LINK"
+                                (click)="clearFileArray(i)"
+                                formControlName="radio"
+                            />
+                            <span>LINK</span>
+                        </div>
+
+                        <!-- OPÇÕES RADIO ARQUIVO -->
+                        <div class="newDoc" *ngIf="showArray(i) == 'ARQUIVO'">
+                            <label class="inputFile" [for]="'file' + i">
+                                <img src="./assets/link.svg" alt="link anexo" />
+                                <span>ADICIONAR ARQUIVO</span>
+                            </label>
+                            <input
+                                (input)="uploadArray($event, i)"
+                                type="file"
+                                [id]="'file' + i"
+                                class="form-control"
+
+                            />
+                            <span *ngIf="!anexoGroup(i)">
+                                Nenhum arquivo selecionado ...</span
+                            >
+                            <span *ngIf="anexoGroup(i)">
+                                {{ anexoGroup(i) }}
+                            </span>
+                        </div>
+
+                        <!-- OPÇÕES RADIO LINK -->
+                        <input
+                            *ngIf="showArray(i) == 'LINK'"
+                            class="link"
+                            type="text"
+                            placeholder="Insira aqui o link"
+                            formControlName="link"
+                        />
+                    </div>
+                </div>
             </div>
-            <input
-              *ngIf="show(i) == 'LINK'"
-              class="link"
-              type="text"
-              placeholder="Insira aqui o link"
-              formControlName="link"
-            />
-          </div>
-        </div>
-      </div>
 
-      <!-- FLUXO DE CONTROLE DO ARRAY E GERADOR DO BOTÃO DE ANEXO DE RESULTADOS -->
-      <div class="flowAnexos">
-        <div class="controlsArray">
-          <span class="newAnexo" (click)="addAnexo()">+ Adicionar anexo</span>
-          <span
-            *ngIf="this.anexos.length >= 1"
-            class="rmAnexo"
-            (click)="rmAnexo()"
-            >(D) Excluir anexo</span
-          >
-        </div>
-        <div class="resultsFile">
-          <div class="addResults">
-            <input
-              [(ngModel)]="checkbox"
-              (input)="clearPdf()"
-              id="resultados"
-              type="checkbox"
-              formControlName="resultados"
-            />
-            <span>Adicionar resultado</span>
-          </div>
-          <div class="fileResultados" *ngIf="checkbox == true">
-            <label for="filePdf">ANEXE AQUI O PDF DE RESULTADOS</label>
-            <input
-              class="inputFile"
-              (change)="uploadPdf($event)"
-              id="filePdf"
-              type="file"
-              formControlName="filePdf"
-            />
-            <span *ngIf="!filePdf"> Nenhum arquivo selecionado </span>
-            <span *ngIf="filePdf"> {{ filePdf }} </span>
-          </div>
-        </div>
-      </div>
+            <!-- FLUXO DE CONTROLE DO ARRAY E GERADOR DO BOTÃO DE ANEXO DE RESULTADOS -->
+            <div class="flowAnexos">
+                <div class="controlsArray">
+                    <span class="newAnexo" (click)="addAnexo()">
+                        <img src="/assets/plus.svg" alt="" /> Adicionar
+                        anexo</span
+                    >
+                    <span
+                        *ngIf="this.anexos.length >= 1"
+                        class="rmAnexo"
+                        (click)="rmAnexo()"
+                    >
+                        <img src="/assets/lixeira.svg" alt="lixeira_icon" />
+                        Excluir anexo</span
+                    >
+                </div>
+                <div class="resultsFile">
+                    <div class="addResults">
+                        <input
+                            [(ngModel)]="checkbox"
+                            (input)="clearPdf()"
+                            id="resultados"
+                            type="checkbox"
+                            formControlName="resultados"
+                        />
+                        <span>Adicionar resultado</span>
+                    </div>
+                    <div class="fileResultados" *ngIf="checkbox">
+                        <label for="filePdf"
+                            >ANEXE AQUI O PDF DE RESULTADOS</label
+                        >
+                        <input
+                            class="inputFile"
+                            (change)="uploadPdf($event)"
+                            id="filePdf"
+                            type="file"
+                            formControlName="filePdf"
+                            accept=".pdf"
+                        />
+                        <span *ngIf="!filePdf">
+                            Nenhum arquivo selecionado
+                        </span>
+                        <span *ngIf="filePdf"> {{ filePdf }} </span>
+                    </div>
+                </div>
+            </div>
 
-      <!-- SUBMIT BUTTON -->
-      <button [disabled]="anexoForm.invalid" type="submit">CADASTRAR</button>
+            <!-- SUBMIT BUTTON -->
+            <div class="disabledButton" *ngIf="anexoForm.invalid">
+                <button [disabled]="anexoForm.invalid" type="submit">
+                    CADASTRAR
+                </button>
+                <span>
+                    Por favor, preencha todos os campos!*
+                </span>
+            </div>
+            <div class="disabledButton" *ngIf="!anexoForm.invalid">
+                <button type="submit">
+                    CADASTRAR
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <p>
-    {{ this.anexoForm.value | json }}
-  </p>
+    <!-- CONSOLE LOG DO TEMPLATE -->
+    <p>
+        {{ this.anexoForm.value | json }}
+    </p>
 </form>
+
+
